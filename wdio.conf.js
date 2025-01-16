@@ -58,6 +58,7 @@ export const config = {
       "appium:platformVersion": "14.0",
       "appium:automationName": "UiAutomator2",
       "appium:app": path.join(process.cwd(), "app/android/ColorNote.apk"),
+      "appium:autoGrantPermissions": true
     },
   ],
 
