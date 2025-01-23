@@ -3,7 +3,7 @@ import todoItemScreen from "../../screenObjects/ios/todoItemScreen";
 import todoListScreen from "../../screenObjects/ios/todoListScreen";
 
 describe("Todo list with item", () => {
-  it("Create Todo list and add item into it", async () => {
+  before(async () => {
     await todoListScreen.createListBtn.click();
     await todoListScreen.listNameInput.addValue("Things to do");
     await todoListScreen.createBtn.click();
@@ -12,7 +12,9 @@ describe("Todo list with item", () => {
     ).toBeExisting();
 
     await todoListScreen.listNameField("Things to do").click();
+  });
 
+  it("Create Todo list and add item into it", async () => {
     await todoItemScreen.createItemBtn.click();
 
     await todoItemScreen.itemTitleInput.addValue("Buy groceries");
