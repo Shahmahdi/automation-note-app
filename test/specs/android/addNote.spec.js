@@ -1,4 +1,4 @@
-import AddNoteScreen from "../screenObjects/android/addNoteScreen";
+import AddNoteScreen from "../../screenObjects/android/addNoteScreen";
 
 const textTitle = "Fav anime list";
 
