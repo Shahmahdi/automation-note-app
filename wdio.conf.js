@@ -23,7 +23,7 @@ export const config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ["./test/specs/**/*.js"],
+  specs: ["./test/specs/ios/ios-todo-item.spec.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -51,14 +51,22 @@ export const config = {
   // https://saucelabs.com/platform/platform-configurator
   //
   capabilities: [
+    // {
+    //   // capabilities for local Appium web tests on an Android Emulator
+    //   "appium:platformName": "Android",
+    //   "appium:deviceName": "Pixel 7",
+    //   "appium:platformVersion": "14.0",
+    //   "appium:automationName": "UiAutomator2",
+    //   "appium:app": path.join(process.cwd(), "app/android/ColorNote.apk"),
+    //   "appium:autoGrantPermissions": true
+    // },
     {
-      // capabilities for local Appium web tests on an Android Emulator
-      "appium:platformName": "Android",
-      "appium:deviceName": "Pixel 7",
-      "appium:platformVersion": "14.0",
-      "appium:automationName": "UiAutomator2",
-      "appium:app": path.join(process.cwd(), "app/android/ColorNote.apk"),
-      "appium:autoGrantPermissions": true
+      // capabilities for local Appium web tests on an IOS Simulator
+      "appium:platformName": "ios",
+      "appium:deviceName": "iPhone 15 Pro Max",
+      "appium:platformVersion": "17.0",
+      "appium:automationName": "XCUITest",
+      "appium:app": path.join(process.cwd(), "app/ios/MVCTodo.app"),
     },
   ],
 
