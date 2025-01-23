@@ -1,3 +1,4 @@
+import { $, $$, expect, driver } from "@wdio/globals";
 import TodoListScreen from "../../screenObjects/ios/todoListScreen";
 
 describe("Todo list", () => {

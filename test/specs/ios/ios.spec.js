@@ -1,3 +1,5 @@
+import { $, $$, expect, driver } from "@wdio/globals";
+
 describe('Ios Find elements', () => {
   it('Find element by accessibility id', async () => {
     await $('~Alert Views').click();

@@ -1,3 +1,4 @@
+import { $, $$, expect, driver } from "@wdio/globals";
 import AddNoteScreen from "../../screenObjects/android/addNoteScreen";
 
 const textTitle = "Fav anime list";

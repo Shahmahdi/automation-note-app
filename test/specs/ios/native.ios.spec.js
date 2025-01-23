@@ -1,3 +1,5 @@
+import { $, $$, expect, driver } from "@wdio/globals";
+
 describe('IOS native features', () => {
   it('Working with modal box', async () => {
     $('~Alert Views').click();
