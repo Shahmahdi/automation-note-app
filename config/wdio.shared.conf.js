@@ -1,29 +1,18 @@
-import path from "path";
-
-export const config = {
+exports.config = {
   //
   // ====================
   // Runner Configuration
   // ====================
   // WebdriverIO supports running e2e tests as well as unit and component tests.
   runner: "local",
-  port: 4723,
   //
   // ==================
   // Specify Test Files
   // ==================
-  // Define which test specs should run. The pattern is relative to the directory
-  // of the configuration file being run.
-  //
-  // The specs are defined as an array of spec files (optionally using wildcards
-  // that will be expanded). The test for each spec file will be run in a separate
-  // worker process. In order to have a group of spec files run in the same worker
-  // process simply enclose them in an array within the specs array.
   //
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ["./test/specs/*/ios-todo-item.spec.js"],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -45,30 +34,6 @@ export const config = {
   // from the same test should run tests.
   //
   maxInstances: 10,
-  //
-  // If you have trouble getting all important capabilities together, check out the
-  // Sauce Labs platform configurator - a great tool to configure your capabilities:
-  // https://saucelabs.com/platform/platform-configurator
-  //
-  capabilities: [
-    // {
-    //   // capabilities for local Appium web tests on an Android Emulator
-    //   "appium:platformName": "Android",
-    //   "appium:deviceName": "Pixel 7",
-    //   "appium:platformVersion": "14.0",
-    //   "appium:automationName": "UiAutomator2",
-    //   "appium:app": path.join(process.cwd(), "app/android/ColorNote.apk"),
-    //   "appium:autoGrantPermissions": true
-    // },
-    {
-      // capabilities for local Appium web tests on an IOS Simulator
-      "appium:platformName": "ios",
-      "appium:deviceName": "iPhone 15 Pro Max",
-      "appium:platformVersion": "17.0",
-      "appium:automationName": "XCUITest",
-      "appium:app": path.join(process.cwd(), "app/ios/MVCTodo.app"),
-    },
-  ],
 
   //
   // ===================

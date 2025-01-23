@@ -1,6 +1,5 @@
 {
   "name": "Color-note-app",
-  "type": "module",
   "devDependencies": {
     "@wdio/appium-service": "^9.5.7",
     "@wdio/cli": "^9.5.7",
