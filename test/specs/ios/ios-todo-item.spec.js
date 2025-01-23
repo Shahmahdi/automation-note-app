@@ -1,36 +1,49 @@
-describe('Todo list with item', () => {
-  it('Create Todo list and add item into it', async () => {
+import todoItemScreen from "../../screenObjects/ios/todoItemScreen";
+import todoListScreen from "../../screenObjects/ios/todoListScreen";
 
-    await $('//*[@name="Create list"]').click();
-    await $('//*[@value="List Name"]').addValue("Things to do");
-    await $('~Create').click();
-    await expect(await $('~Things to do')).toBeExisting();
+describe("Todo list with item", () => {
+  it("Create Todo list and add item into it", async () => {
+    await todoListScreen.createListBtn.click();
+    await todoListScreen.listNameInput.addValue("Things to do");
+    await todoListScreen.createBtn.click();
+    await expect(
+      await todoListScreen.listNameField("Things to do")
+    ).toBeExisting();
 
-    await $('~Things to do').click();
+    await todoListScreen.listNameField("Things to do").click();
 
-    await $('//*[@name="Create item"]').click();
+    await todoItemScreen.createItemBtn.click();
 
-    await $('//*[@value="Title"]').addValue("Buy groceries");
-    await $('//*[@value="Due"]').click();
+    await todoItemScreen.itemTitleInput.addValue("Buy groceries");
+    await todoItemScreen.itemDateInput.click();
     const tomorrowDate = new Date().getDate() + 1;
-    await $(`//XCUIElementTypeStaticText[@name="${tomorrowDate}"]`).click();
-    await $('~Create').click();
+    await todoItemScreen.datePickerTomorrowDateInput(tomorrowDate).click();
+    await todoListScreen.createBtn.click();
 
-    await $('~Add').click();
+    await todoItemScreen.addItemBtn.click();
 
-    await $('//*[@value="Title"]').addValue("Buy cloth");
-    await $('//*[@value="Due"]').click();
+    await todoItemScreen.itemTitleInput.addValue("Buy cloth");
+    await todoItemScreen.itemDateInput.click();
     const futureDate = new Date().getDate() + 5;
-    await $(`//XCUIElementTypeStaticText[@name="${futureDate}"]`).click();
-    await $('~Create').click();
+    await todoItemScreen.datePickerTomorrowDateInput(futureDate).click();
+    await todoListScreen.createBtn.click();
 
-    await expect(await $('~Buy groceries')).toBeExisting();
-    const tomorrowText = '**/XCUIElementTypeStaticText[`name CONTAINS "Tomorrow"`]';
-    await expect(await $(`-ios class chain:${tomorrowText}`).getText()).toContain("Tomorrow");
+    await expect(
+      await todoItemScreen.getByAccessibilityId("Buy groceries")
+    ).toBeExisting();
+    const tomorrowText =
+      '**/XCUIElementTypeStaticText[`name CONTAINS "Tomorrow"`]';
+    await expect(
+      await todoItemScreen.getByClassChainsId(tomorrowText).getText()
+    ).toContain("Tomorrow");
 
-    await expect(await $('~Buy cloth')).toBeExisting();
+    await expect(
+      todoItemScreen.getByAccessibilityId("Buy cloth")
+    ).toBeExisting();
     const futureText = '**/XCUIElementTypeStaticText[`name CONTAINS "28"`]';
-    await expect(await $(`-ios class chain:${futureText}`).getText()).toContain(`${futureDate}`);
+    await expect(
+      await todoItemScreen.getByClassChainsId(futureText).getText()
+    ).toContain(`${futureDate}`);
 
     await driver.pause(2000);
   });
